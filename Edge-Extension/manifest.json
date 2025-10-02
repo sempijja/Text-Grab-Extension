@@ -26,6 +26,7 @@
       "resources": [
         "modal.css",
         "fluent-icons.css",
+        "fonts/*",
         "lib/tesseract/worker.min.js",
         "lib/tesseract-core/*",
         "lib/tessdata/*"

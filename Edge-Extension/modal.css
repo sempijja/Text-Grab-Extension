@@ -33,100 +33,115 @@
 
 #text-grab-toolbar {
   position: absolute;
-  top: 20px;
+  top: 24px; /* Increased spacing from the top */
   left: 50%;
   transform: translateX(-50%);
-  background-color: #2b2b2b; /* Darker background */
-  border-radius: 8px;
-  padding: 6px;
+  background-color: rgba(30, 30, 30, 0.85); /* Semi-transparent dark background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px; /* Larger, more modern radius */
+  padding: 8px; /* More internal padding */
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px; /* Increased gap between items */
   z-index: 1;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  border: 1px solid #444;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Softer, more pronounced shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
+/* Base styles for all buttons in the toolbar */
 .text-grab-mode-btn, #text-grab-toolbar-close, .text-grab-dropdown button {
-  background-color: #3c3c3c;
-  border: 1px solid #555;
-  border-radius: 4px;
-  color: white;
+  background-color: transparent; /* Buttons are transparent by default */
+  border: none;
+  border-radius: 8px; /* Consistent rounded corners */
+  color: #EAEAEA; /* Off-white for better readability */
   cursor: pointer;
-  width: 34px;
-  height: 34px;
+  width: 38px; /* Slightly larger buttons */
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  transition: background-color 0.2s;
+  font-size: 20px; /* Larger icons */
+  transition: background-color 0.25s ease, color 0.25s ease;
+  position: relative; /* For tooltips if added later */
 }
 
+/* Hover effect for all buttons */
 .text-grab-mode-btn:hover, .text-grab-dropdown button:hover {
-  background-color: #4f4f4f;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
 }
 
+/* Active state for mode buttons */
 .text-grab-mode-btn.active {
-  background-color: #308E98; /* Teal */
-  border-color: #18474C; /* Dark Teal */
+  background-color: #308E98; /* Keep the brand teal for active state */
+  color: white;
+}
+.text-grab-mode-btn.active:hover {
+  background-color: #38a5b0; /* Slightly lighter teal on hover */
 }
 
+/* Specific styling for the close button */
 #text-grab-toolbar-close {
-  background-color: #c42b1c; /* Fluent UI Red */
+  margin-left: 8px; /* Add some space before the close button */
 }
 #text-grab-toolbar-close:hover {
-  background-color: #e03728;
+  background-color: #E81123; /* Fluent UI red for destructive actions */
+  color: white;
 }
 
-
-/* Modern Dropdown Styles */
+/* --- Modern Dropdown Styles --- */
 .text-grab-dropdown {
   position: relative;
   display: inline-block;
 }
+
 .text-grab-dropdown button {
-  width: auto;
-  padding: 0 10px;
+  width: auto; /* Allow button to size to its content */
+  padding: 0 12px; /* Horizontal padding */
+  font-size: 14px; /* Smaller font size for text button */
+  font-weight: 500;
 }
 
 .text-grab-dropdown-content {
-  /* Start hidden, prepare for transition */
   visibility: hidden;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s;
-
+  transform: translateY(-5px) scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   position: absolute;
-  background-color: #2b2b2b; /* Match toolbar */
-  border: 1px solid #444;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+  background-color: rgba(40, 40, 40, 0.9); /* Match the modern, blurred look */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 180px; /* Slightly wider */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
   z-index: 2;
-  border-radius: 6px;
-  padding: 4px 0; /* Add some vertical padding */
-  margin-top: 8px; /* Space between button and menu */
+  border-radius: 8px;
+  padding: 6px; /* Padding around the links */
+  margin-top: 10px; /* More space between button and menu */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-5px) scale(0.95); /* Initial state for transform */
 }
 
-/* This class will be toggled by JS */
+/* Toggled by JS to show the dropdown */
 .text-grab-dropdown.active .text-grab-dropdown-content {
   visibility: visible;
   opacity: 1;
-  transform: translateY(0) translateX(-50%);
+  transform: translateX(-50%) translateY(0) scale(1);
 }
 
-
 .text-grab-dropdown-content a {
-  color: white;
-  padding: 10px 16px;
+  color: #EAEAEA;
+  padding: 10px 14px;
   text-decoration: none;
   display: block;
-  transition: background-color 0.15s;
+  transition: background-color 0.2s ease;
+  border-radius: 6px; /* Rounded corners for each item */
+  font-size: 14px;
 }
 
 .text-grab-dropdown-content a:hover {
-  background-color: #3c3c3c; /* Hover feedback */
+  background-color: rgba(255, 255, 255, 0.1); /* Consistent hover effect */
+  color: white;
 }
 
 /* Output Panel Styles */
