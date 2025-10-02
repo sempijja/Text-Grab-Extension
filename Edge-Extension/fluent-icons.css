@@ -1,7 +1,7 @@
 /* Define the font face for Fluent UI Icons */
 @font-face {
   font-family: 'FabricMDL2Icons';
-  src: url('https://cdn.jsdelivr.net/npm/@fluentui/font-icons-mdl2@8.5.63/fonts/fabric-icons-a13498cf.woff') format('woff');
+  src: url('chrome-extension://__MSG_@@extension_id__/fonts/fabric-icons.woff') format('woff');
 }
 
 /* Base class for all icons */

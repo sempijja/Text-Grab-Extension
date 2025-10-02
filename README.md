@@ -132,27 +132,3 @@ If you have any questions or feedback reach out on Twitter [@TheJoeFin](http://w
 
 ### Pssst, on a Mac?
 Check out the awesome app Text Sniper! It is very similar to Text Grab but for Mac! And if you use my [affiliate link here](https://gumroad.com/a/984365907/NYNNM) you will support Text Grab development as well! 
-
-
-## Browser Extension
-
-In addition to the Windows application, Text Grab is also available as a browser extension for modern web browsers like Microsoft Edge and Google Chrome. The extension allows you to perform OCR on any content within your browser window.
-
-### How it Works
-
-1.  **Initiate Capture**: Click the Text Grab extension icon in your browser's toolbar. This will activate the screen capture mode.
-2.  **Select Region**: Your screen will dim, and you can click and drag to select the region of the page you want to capture.
-3.  **OCR and Copy**: Once you release the mouse, the selected region is processed by an OCR engine directly in your browser. The recognized text is automatically copied to your clipboard.
-4.  **Modes**: The extension offers different modes for text processing, such as "Single Line" to combine all text into one line, and a "Grab Frame" mode that lets you position a resizable frame over content to perform captures without re-initiating the capture process.
-
-### How to Install the Extension
-
-Since the extension is not yet published on official extension stores, you can load it manually into your browser:
-
-1.  **Download the code**: Clone or download this repository to your local machine.
-2.  **Open Browser Extensions Page**:
-    *   In **Microsoft Edge**, navigate to `edge://extensions/`.
-    *   In **Google Chrome**, navigate to `chrome://extensions/`.
-3.  **Enable Developer Mode**: Find and turn on the "Developer mode" toggle, usually located in the corner of the page.
-4.  **Load Unpacked**: Click the "Load unpacked" button and select the `Edge-Extension` folder from the downloaded repository.
-5.  The Text Grab extension should now appear in your list of extensions and be ready to use.

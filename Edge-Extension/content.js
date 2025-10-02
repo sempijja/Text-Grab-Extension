@@ -82,29 +82,36 @@ function displayCaptureInModal(dataUrl) {
   langSelect.appendChild(engOption);
   toolbar.appendChild(langSelect);
 
+  // Helper function to create icon elements reliably
+  const createIcon = (iconClass) => {
+    const icon = document.createElement('i');
+    icon.className = `ms-Icon ${iconClass}`;
+    return icon;
+  };
+
   // Mode buttons
   const normalModeBtn = document.createElement('button');
   normalModeBtn.className = 'text-grab-mode-btn active';
   normalModeBtn.dataset.mode = 'Normal';
-  normalModeBtn.innerHTML = '<i class="ms-Icon ms-Icon--TextDocument"></i>';
+  normalModeBtn.appendChild(createIcon('ms-Icon--TextDocument'));
   toolbar.appendChild(normalModeBtn);
 
   const singleLineBtn = document.createElement('button');
   singleLineBtn.className = 'text-grab-mode-btn';
   singleLineBtn.dataset.mode = 'Single Line';
-  singleLineBtn.innerHTML = '<i class="ms-Icon ms-Icon--Add"></i>'; // Placeholder, replace with better icon
+  singleLineBtn.appendChild(createIcon('ms-Icon--Add'));
   toolbar.appendChild(singleLineBtn);
 
   const tableBtn = document.createElement('button');
   tableBtn.className = 'text-grab-mode-btn';
   tableBtn.dataset.mode = 'Table';
-  tableBtn.innerHTML = '<i class="ms-Icon ms-Icon--Table"></i>';
+  tableBtn.appendChild(createIcon('ms-Icon--Table'));
   toolbar.appendChild(tableBtn);
 
   const grabFrameBtn = document.createElement('button');
   grabFrameBtn.className = 'text-grab-mode-btn';
   grabFrameBtn.dataset.mode = 'Grab Frame';
-  grabFrameBtn.innerHTML = '<i class="ms-Icon ms-Icon--Camera"></i>'; // Placeholder
+  grabFrameBtn.appendChild(createIcon('ms-Icon--Camera'));
   toolbar.appendChild(grabFrameBtn);
 
   // Post-capture actions dropdown
