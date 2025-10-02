@@ -170,6 +170,12 @@
   background-color: #005a9e;
 }
 
+#text-grab-copy-button:disabled {
+  background-color: #0078D4;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* Grab Frame Styles */
 #text-grab-frame {
   position: fixed;

@@ -308,6 +308,13 @@ async function performOCR(imageElement, rect, mode) {
     }
     // Table mode will be handled later, for now it acts like Normal.
 
+    // Automatically copy the recognized text to the clipboard
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Text successfully copied to clipboard.');
+    }).catch(err => {
+      console.error('Failed to copy text to clipboard:', err);
+    });
+
     // --- Output Panel Logic ---
     const outputPanel = document.getElementById('text-grab-output-panel');
     const outputTextarea = document.getElementById('text-grab-output-textarea');
@@ -316,11 +323,9 @@ async function performOCR(imageElement, rect, mode) {
     outputTextarea.value = text;
     outputPanel.style.display = 'flex';
 
-    copyButton.onclick = () => {
-      navigator.clipboard.writeText(outputTextarea.value);
-      copyButton.textContent = 'Copied!';
-      setTimeout(() => { copyButton.textContent = 'Copy'; }, 2000);
-    };
+    // Since the text is already on the clipboard, update the button to reflect this.
+    copyButton.textContent = 'Copied to clipboard!';
+    copyButton.disabled = true;
 
     // Hide the main overlay and selection box, showing only the output panel
     const screenshotContainer = document.getElementById('text-grab-screenshot-container');
