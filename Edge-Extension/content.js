@@ -165,7 +165,6 @@ function displayCaptureInModal(dataUrl) {
     });
   });
 
-  const actionsMenu = document.querySelector('.text-grab-dropdown-content');
   actionsMenu.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       e.preventDefault();
