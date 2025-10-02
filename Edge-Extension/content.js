@@ -165,11 +165,28 @@ function displayCaptureInModal(dataUrl) {
     });
   });
 
+  // --- Dropdown Click-to-Toggle Logic ---
+  actionsButton.addEventListener('click', (e) => {
+    // Toggling the class will show/hide the menu via CSS
+    actionsDropdown.classList.toggle('active');
+    // Prevent the event from bubbling up to the overlay listener
+    e.stopPropagation();
+  });
+
   actionsMenu.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       e.preventDefault();
       const action = e.target.dataset.action;
       applyTextAction(action);
+      // The click will bubble up to the overlay, which will close the menu.
+    }
+  });
+
+  // Add a listener to the entire overlay to close the dropdown
+  // when the user clicks anywhere that isn't the dropdown button.
+  overlay.addEventListener('click', () => {
+    if (actionsDropdown.classList.contains('active')) {
+      actionsDropdown.classList.remove('active');
     }
   });
 
