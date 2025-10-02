@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Text Grab",
+  "version": "1.0.0",
+  "description": "An extension to capture and recognize text from your screen.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "lib/tesseract/tesseract.min.js",
+        "content.js"
+      ],
+      "css": ["modal.css", "fluent-icons.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "modal.css",
+        "fluent-icons.css",
+        "lib/tesseract/worker.min.js",
+        "lib/tesseract-core/*",
+        "lib/tessdata/*"
+      ],
+      "matches": [ "<all_urls>" ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; font-src 'self' https://cdn.jsdelivr.net;"
+  },
+  "action": {
+    "default_icon": {
+      "128": "images/icon128.png"
+    },
+    "default_title": "Grab Text"
+  },
+  "icons": {
+    "128": "images/icon128.png"
+  }
+}

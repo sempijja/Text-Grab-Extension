@@ -1,0 +1,40 @@
+/* Define the font face for Fluent UI Icons */
+@font-face {
+  font-family: 'FabricMDL2Icons';
+  src: url('https://cdn.jsdelivr.net/npm/@fluentui/font-icons-mdl2@8.5.63/fonts/fabric-icons-a13498cf.woff') format('woff');
+}
+
+/* Base class for all icons */
+.ms-Icon {
+  font-family: 'FabricMDL2Icons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Specific Icon Classes with Unicode content */
+.ms-Icon--Cancel::before {
+  content: '\\E711';
+}
+.ms-Icon--Camera::before {
+  content: '\\E722';
+}
+.ms-Icon--Copy::before {
+  content: '\\E8C8';
+}
+.ms-Icon--Settings::before {
+  content: '\\E713';
+}
+.ms-Icon--TextDocument::before {
+  content: '\\F029';
+}
+.ms-Icon--Table::before {
+  content: '\\ED86';
+}
+.ms-Icon--Add::before {
+  content: '\\E710';
+}
