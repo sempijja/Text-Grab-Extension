@@ -1,0 +1,217 @@
+#text-grab-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2147483647; /* Maximum z-index */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#text-grab-screenshot-container {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+#text-grab-screenshot {
+  max-width: 100%;
+  max-height: 100%;
+  border: 2px solid #0078D4; /* A blue border to distinguish the image */
+  cursor: crosshair;
+}
+
+#text-grab-selection-box {
+  position: absolute;
+  background-color: rgba(0, 120, 212, 0.3);
+  border: 1px dashed #ffffff;
+  pointer-events: none; /* Allows mouse events to pass through to the image */
+}
+
+#text-grab-toolbar {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2b2b2b; /* Darker background */
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  border: 1px solid #444;
+}
+
+.text-grab-mode-btn, #text-grab-toolbar-close, .text-grab-dropdown button {
+  background-color: #3c3c3c;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background-color 0.2s;
+}
+
+.text-grab-mode-btn:hover, .text-grab-dropdown button:hover {
+  background-color: #4f4f4f;
+}
+
+.text-grab-mode-btn.active {
+  background-color: #308E98; /* Teal */
+  border-color: #18474C; /* Dark Teal */
+}
+
+#text-grab-toolbar-close {
+  background-color: #c42b1c; /* Fluent UI Red */
+}
+#text-grab-toolbar-close:hover {
+  background-color: #e03728;
+}
+
+
+/* Modern Dropdown Styles */
+.text-grab-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.text-grab-dropdown button {
+  width: auto;
+  padding: 0 10px;
+}
+
+.text-grab-dropdown-content {
+  /* Start hidden, prepare for transition */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s;
+
+  position: absolute;
+  background-color: #2b2b2b; /* Match toolbar */
+  border: 1px solid #444;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+  z-index: 2;
+  border-radius: 6px;
+  padding: 4px 0; /* Add some vertical padding */
+  margin-top: 8px; /* Space between button and menu */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* This class will be toggled by JS */
+.text-grab-dropdown.active .text-grab-dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) translateX(-50%);
+}
+
+
+.text-grab-dropdown-content a {
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.15s;
+}
+
+.text-grab-dropdown-content a:hover {
+  background-color: #3c3c3c; /* Hover feedback */
+}
+
+/* Output Panel Styles */
+#text-grab-output-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 15px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#text-grab-output-textarea {
+  width: 100%;
+  height: 150px;
+  resize: vertical;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+#text-grab-copy-button {
+  align-self: flex-end;
+  padding: 8px 15px;
+  background-color: #0078D4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#text-grab-copy-button:hover {
+  background-color: #005a9e;
+}
+
+#text-grab-copy-button:disabled {
+  background-color: #0078D4;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Grab Frame Styles */
+#text-grab-frame {
+  position: fixed;
+  border: 2px dashed #0078D4;
+  background-color: rgba(0, 120, 212, 0.1);
+  z-index: 2147483646; /* Just below max */
+  cursor: move;
+}
+
+#text-grab-frame-toolbar {
+  position: absolute;
+  top: -32px;
+  left: 0;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  padding: 4px;
+  display: flex;
+  gap: 5px;
+}
+
+.text-grab-frame-btn {
+  padding: 2px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #0078D4;
+  border: 1px solid white;
+}
+
+.resize-handle.top-left { top: -5px; left: -5px; cursor: nwse-resize; }
+.resize-handle.top-right { top: -5px; right: -5px; cursor: nesw-resize; }
+.resize-handle.bottom-left { bottom: -5px; left: -5px; cursor: nesw-resize; }
+.resize-handle.bottom-right { bottom: -5px; right: -5px; cursor: nwse-resize; }
